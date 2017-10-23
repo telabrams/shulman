@@ -1,0 +1,19 @@
+/*
+Theme Name: Insurence Company
+Theme URI: домашняя-страница-темы
+Description: Insurence Company Theme
+Author: Olha Hryhorenko
+Author URI: o.grigorenko@intellectus-studio.com
+Template:
+Version: 1.0
+
+*/
+
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+a img.alignright {float:right; margin:0 0 1em 1em}
+a img.alignleft {float:left; margin:0 1em 1em 0}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
+

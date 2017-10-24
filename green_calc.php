@@ -47,9 +47,9 @@ $url1 = get_template_directory_uri();
                             <div class="auto_wrapper">
                                 <div class="auto_tabs auto_tabs_green">
                                     <a href="#auto_tabs_anchor" class="link_scroll">
-                                        <div class="auto_tabs_item current-auto-tab" ng-click="autoTabsClick(coeficient.data.B1); sickLimit(); autoCategory = 'Легкове авто'; engine = 'до 1600 см'; year_1=false; year_2=false; year_3=false;taxiClick(coeficient.data.G1); taxiQuestion = 'Ні';year_4=false; autoYear = '2013 р. і раніше'; insuranceChooseYearEdit(insuranceDriveExperience.more_2013); francFunction(); DTP = 'більше 4 років'" ng-mousedown="virginUse('engine_xs', 'current-engine'); arrayConvert = autoArrayConvert">
+                                        <div class="auto_tabs_item_green current-auto-tab" ng-click="vehicle = 'c'; vehicleName = 'Легкове авто'">
                                             <div class="mask_click"></div>
-                                            <div class="arrow"></div>
+                                            <div class="arrow block"></div>
                                             <div class="img_container">
                                                 <img src="<?php echo get_template_directory_uri();?>/images/svg/icons_car.svg"/>
                                                 <img src="<?php echo get_template_directory_uri();?>/images/svg/icons_car_orange.svg"/>
@@ -58,7 +58,7 @@ $url1 = get_template_directory_uri();
                                         </div>
                                     </a>
                                     <a href="#auto_moto_anchor" class="link_scroll">
-                                        <div class="auto_tabs_item" ng-click="autoTabsClick(coeficient.data.A1);limitCount=false; pilgaText = 'Не маю'; autoCategory = 'Мотоцикл / моторолер'; engine = 'до 300 см'; francPzu = '0'; francUsg = '1000'; KBMCheck = false; insuranceChooseYearPilFalse(); year_1=false; year_2=false; year_3=false;taxiClick(coeficient.data.G1); year_4=false; autoYear = '2013 р. і раніше'; insuranceChooseYearEdit(insuranceDriveExperience.more_2013); DTP = 'більше 4 років'" ng-mousedown="virginUse('moto_xs', 'current-moto'); arrayConvert = motoArrayConvert">
+                                        <div class="auto_tabs_item_green" ng-click="vehicle = 'b'; vehicleName = 'Мотоцикл / моторолер'">
                                             <div class="mask_click"></div>
                                             <div class="arrow"></div>
                                             <div class="img_container">
@@ -69,7 +69,7 @@ $url1 = get_template_directory_uri();
                                         </div>
                                     </a>
                                     <a href="#auto_wagen_anchor" class="link_scroll">
-                                        <div class="auto_tabs_item" ng-click="autoTabsClick(coeficient.data.F);limitCount=false; pilgaText = 'Не маю'; autoCategory = 'Причіп / трейлер'; engine = 'Причіп / трейлер для легкового авто'; francPzu = '0'; francUsg = '1000'; KBMCheck = false; insuranceChooseYearPilFalse(); year_1=false; year_2=false; year_3=false;taxiClick(coeficient.data.G1); year_4=false; autoYear = '2013 р. і раніше'; insuranceChooseYearEdit(insuranceDriveExperience.more_2013); DTP = 'більше 4 років'" ng-mousedown="virginUse('tourist_xs', 'current-tourist'); arrayConvert = wagenArrayConvert">
+                                        <div class="auto_tabs_item_green" ng-click="vehicle = 't'; vehicleName = 'Причіп / трейлер'">
                                             <div class="mask_click"></div>
                                             <div class="arrow"></div>
                                             <div class="img_container">
@@ -89,9 +89,9 @@ $url1 = get_template_directory_uri();
                                         <td>
                                             <div class="radio_block gr_country">
                                                 <input type="radio" checked name="gr_country" id="gr_country_f">
-                                                <label class="button_more_label current-label" for="gr_country_f" ng-click="countries = ''">Країни Європи</label>
+                                                <label class="button_more_label current-label" for="gr_country_f" ng-click="countries = ''; countriesName = 'Країни Європи'">Країни Європи</label>
                                                 <input type="radio" name="gr_country" id="gr_country_s">
-                                                <label class="button_more_label" for="gr_country_s" ng-click="countries = 'sng' ">Росія Білорусь Молдова</label>
+                                                <label class="button_more_label" for="gr_country_s" ng-click="countries = 'sng'; countriesName = 'Росія Білорусь Молдова' ">Росія Білорусь Молдова</label>
                                             </div>
                                         </td>
                                     </tr>
@@ -109,7 +109,7 @@ $url1 = get_template_directory_uri();
                                 </table>
                             </div>
                         </div>
-                        <div class="calc_n flor_next" ng-show="!wrongCityCheck" ng-click="clickLimit(limitCount); preCalculating(KBP,K1,K2,K3,K4Axa,K4U,K4Us,K4P,K5,K6,KBM[2],KBM[3],KBM[0],KBM[1],Kpil)">Розрахувати</div>
+                        <div class="calc_n flor_next" ng-click="countGreen()">Розрахувати</div>
                     </div>
                     <div class="state_2 flor">
                         <div class="desktop">
@@ -148,15 +148,15 @@ $url1 = get_template_directory_uri();
                                                     <tbody>
                                                     <tr>
                                                         <td>Тип ТЗ</td>
-                                                        <td>200 000</td>
+                                                        <td>{{vehicleName}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Територія покриття</td>
-                                                        <td>100 000</td>
+                                                        <td>{{countriesName}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Період страхування</td>
-                                                        <td>100 000</td>
+                                                        <td>{{dateName}}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -216,7 +216,7 @@ $url1 = get_template_directory_uri();
                                                           <tbody>
                                                           <tr>
                                                               <td>ЦІНА</td>
-                                                              <td class="oscpv">{{preFinalResultPZU}}<span class="arno">₴</span></td>
+                                                              <td class="oscpv">{{price}}<span class="arno">₴</span></td>
                                                           </tr>
                                                           </tbody>
                                                       </table>
@@ -259,7 +259,7 @@ $url1 = get_template_directory_uri();
                                                           <tbody>
                                                           <tr>
                                                               <td>ЦІНА</td>
-                                                              <td class="oscpv">{{preFinalResultPZU}}<span class="arno">₴</span></td>
+                                                              <td class="oscpv">{{price}}<span class="arno">₴</span></td>
                                                           </tr>
                                                           </tbody>
                                                       </table>
@@ -276,21 +276,42 @@ $url1 = get_template_directory_uri();
                             <div class="reminde_wrapper">
                               <div class="row clearfix">
                                 <div class="col-md-12">
-                                  <form class="" action="" method="post">
+                                  <form role='form' name="remindForm" class="remindForm" id="remindForm" action="" method="post" novalidate>
                                     <div class="row clearfix">
                                       <div class="col-md-4">
-                                        <input type="email" name="" value="">
+                                        <div class="input_container" ng-class="{ 'has-error' : remindForm.email.$invalid && !remindForm.email.$pristine }">
+                                           <span>
+                                               Ваш Email<span class="redstar" style="color: red">*</span>
+                                           </span>
+                                           <input type="email" name="email" ng-model="remindFormM.email" value="" required>
+                                            <p style="color:red;" ng-show="remindForm.email.$invalid && remindForm.email.$touched" class="help-block">Введіть Ваш Email</p>
+                                        </div>
                                       </div>
                                       <div class="col-md-4">
-                                        <input type="phone" name="" value="">
+                                        <div class="input_container" ng-class="{ 'has-error' : remindForm.phone.$invalid && !remindForm.phone.$pristine }">
+                                           <span>
+                                               Ваш телефон<span class="redstar" style="color: red">*</span>
+                                           </span>
+                                           <input type="text" name="phone" value="" ng-model="remindFormM.phone" required>
+                                            <p style="color:red;" ng-show="remindForm.phone.$invalid && remindForm.phone.$touched" class="help-block">Введіть Ваш телефон</p>
+                                        </div>
+
                                       </div>
                                       <div class="col-md-4">
-                                        <input id="datepicker" type="text" name="" value="">
+                                        <div class="input_container" ng-class="{ 'has-error' : remindForm.date.$invalid && !remindForm.date.$pristine }">
+                                           <span>
+                                               Дата нагадування<span class="redstar" style="color: red">*</span>
+                                           </span>
+                                           <input id="datepicker" type="text" ng-model="remindFormM.date" name="date" value="" required>
+                                            <p style="color:red;" ng-show="remindForm.date.$invalid && remindForm.date.$touched" class="help-block">Введіть дату</p>
+                                        </div>
                                       </div>
                                     </div>
-                                    <div class="calc_n">
-                                      Нагадати
-                                    </div>
+                                    <input type="text" hidden name="price" id="price" ng-model="remindFormM.price = price">
+                                    <input type="text" hidden name="vehicle" id="vehicle" ng-model="remindFormM.price = vehicleName">
+                                    <input type="text" hidden name="countries" id="countries" ng-model="remindFormM.price = countriesName">
+                                    <input type="text" hidden name="date_range" id="date_range" ng-model="remindFormM.price = dateName">
+                                    <button type="submit" ng-disabled="remindForm.$invalid" ng-class="{'disabled' : remindForm.$invalid}" class="calc_n" id="marked">Нагадати</button>
                                   </form>
                                 </div>
                               </div>
@@ -320,14 +341,14 @@ $url1 = get_template_directory_uri();
                             <div class="information_wrapper">
                                 <div class="header">
                                     <h4>надати інформацію</h4>
-                                    <span>Виберіть 1 з 3-х способів</span>
-                                    <div class="info_tab_block">
+                                    <span>Виберіть 1 з 2-х способів</span>
+                                    <div class="info_tab_block info_tab_block_green">
                                         <div class="info_tab_item button_more current-tab">
                                             Завантажити фото документів
                                         </div>
-                                        <div class="info_tab_item button_more">
+                                        <!-- <div class="info_tab_item button_more">
                                             ЗАВАНТАЖИТИ ФОТО ПОЛІСУ
-                                        </div>
+                                        </div> -->
                                         <div class="info_tab_item button_more">
                                             Заповнити анкету
                                         </div>
@@ -345,10 +366,13 @@ $url1 = get_template_directory_uri();
                                             <div class="col-md-7">
                                                <span>Завантажте фото<br>
                                                документів</span>
-                                                <span>Паспорт Страхувальника (1,2 ст. + прописка)</span>
+                                                <span>Посвідчення водія (Страхувальника)</span>
                                                 <span>Податковий номер (іпн)</span>
                                                 <span>Тех паспорт ТЗ (1,2 ст.)</span>
-                                                <p style="color:red;" ng-show="dragDropForm1.documents.$invalid && dragDropForm1.documents.$pristine" class="help-block">Завантажте фото документів</p>
+                                                <span>Дата початку дії</span>
+                                                <input type="text" id="datepickerDrag" ng-model="preFinalForm.dateDragForm" name="dateDragForm" required>
+                                                <p style="color:red;" ng-show="dragDropForm1.dateDragForm.$invalid && !dragDropForm1.dateDragForm.$pristine" class="help-block">Вкажіть дату</p>
+                                                <p style="color:red;" ng-show="dragDropForm1.documents.$invalid && !dragDropForm1.documents.$pristine" class="help-block">Завантажте фото документів</p>
                                             </div>
                                         </div>
                                         <div class="row clearfix">
@@ -362,7 +386,7 @@ $url1 = get_template_directory_uri();
                                         </div>
                                     </form>
                                 </div>
-                                <div class="download_block">
+                                <!-- <div class="download_block">
                                     <form role="form" method="post" name="dragDropForm2" enctype="multipart/form-data" class="dragDropForm2" ng-submit='validation(dragDropForm2)' novalidate>
                                         <div class="row clearfix">
                                             <input type="file" id="polis" hidden valid-file name="polis[]" accept="image/*" ng-model="preFinalForm.polis"  ng-bind="dragDrop('polis')" ng-click="showHelper = true" multiple required>
@@ -390,7 +414,7 @@ $url1 = get_template_directory_uri();
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> -->
                                 <div class="download_block">
                                     <div class="row clearfix">
                                         <div class="col-md-9">
@@ -577,6 +601,20 @@ $url1 = get_template_directory_uri();
                                                                </span>
                                                                 <input type="text" name="registNumber" ng-model="preFinalForm.registNumber" required>
                                                                 <p style="color:red;" ng-show="preForm.registNumber.$invalid && preForm.registNumber.$touched" class="help-block">Введіть реєстраційний номер ТЗ</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="state_3_item">
+                                                    <h4>Дата початку дії</h4>
+                                                    <div class="row clearfix">
+                                                        <div class="col-md-12">
+                                                            <div class="input_container" ng-class="{ 'has-error' : preForm.dateDI.$invalid && !preForm.dateDI.$pristine}">
+                                                               <span>
+                                                                   Вкажіть дату<span class="redstar" style="color: red">*</span>
+                                                               </span>
+                                                                <input type="text" name="dateDI" id="datepickerDI" ng-model="preFinalForm.dateDI" required>
+                                                                <p style="color:red;" ng-show="preForm.dateDI.$invalid && preForm.dateDI.$touched" class="help-block">Не вірний формат дати</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -994,6 +1032,40 @@ $url1 = get_template_directory_uri();
 
     </section>
 <script>
+jQuery("#remindForm").submit(function(event){
+    var form = document.getElementById("remindForm");
+
+  //disable the default form submission
+  event.preventDefault();
+
+  //grab all form data
+  var formData = new FormData(jQuery(this)[0]);
+
+  jQuery.ajax({
+    url: '<?php echo $url1;?>/sendmail_remind.php',
+      data: new FormData(form),// the formData function is available in almost all new browsers.
+      type:"post",
+      contentType:false,
+      processData:false,
+      cache:false,
+      dataType:"json", // Change this according to your response from the server.
+  error:function(err){
+        console.error(err);
+        console.log("Error.");
+  },
+  success:function(data){
+       console.log(data);
+       console.log("Success.");
+  },
+  complete:function(data){
+   console.log("Request finished.");
+   console.log(data);
+
+  }
+  });
+
+  return false;
+});
    //Program a custom submit function for the form
 jQuery("#finalForm").submit(function(event){
     var form = document.getElementById("finalForm");

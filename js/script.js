@@ -18,10 +18,32 @@ jQuery(document).ready(function () {
     });
     // scroll on mobile
 
-    if (jQuery('div').has('#datepicker')) {
+
+    /**GREEN CARD -start-*/
+
+    if (jQuery('section').has('.calculator_green')) {
+      let vehicle = jQuery('.auto_tabs_item_green');
+
+      vehicle.on('click', function(){
+        vehicle
+        .removeClass('current-auto-tab')
+        .find('.arrow').removeClass('block')
+        jQuery(this)
+        .addClass('current-auto-tab')
+        .find('.arrow').addClass('block')
+      })
+
       var datepicker = jQuery('#datepicker');
       datepicker.datepicker();
+
+      var datepickerDI = jQuery('#datepickerDI');
+      datepickerDI.datepicker();
+
+      var datepickerDrag = jQuery('#datepickerDrag');
+      datepickerDrag.datepicker();
     }
+
+    /**GREEEN CARD -end-*/
 
     function scrollResize() {
 
@@ -1053,25 +1075,54 @@ insuranceApp.controller('autoLabel', ['$scope', '$http', function ($scope, $http
           }
         ]
         $scope.countries = ''
+        $scope.countriesName = 'Країни Європи'
         $scope.date = '15_d';
-        $scope.vehicle = '';
+        $scope.dateName = '15 Днів'
+        $scope.vehicle = 'c';
+        $scope.vehicleName = 'Легкове Авто';
+        $scope.result = '';
+        $scope.price = '';
         $scope.g_item = $scope.greenDate[0];
+        $scope.valArray = [];
 
         $scope.greenDateVal = function (date) {
-          let curDate = date.value;
-          var valArray = [];
-          for (target in $scope.green_coef.dataGreen) {
-            target.indexOf(date.value) > -1 && target.indexOf(date.value) !== 1 && valArray.push(target);
-          }
-          valArray.forEach(function(target) {
-            target.indexOf($scope.countries) === -1 && valArray.splice(target.indexOf($scope.countries),1)
-            target.indexOf($scope.countries) > -1 && valArray.splice(target.indexOf($scope.countries),1)
-          })
-          console.log(valArray);
+          $scope.date = date.value;
+          $scope.dateName = date.name;
         }
 
         $scope.countGreen = function () {
-          console.log($scope.date, $scope.countries, $scope.vehicle);
+          let constructArray = [];
+
+          for (target in $scope.green_coef.dataGreen) {
+            target.indexOf($scope.date) > -1 && target.indexOf($scope.date) !== 1 && $scope.valArray.push(target);
+          }
+
+          console.log($scope.valArray);
+
+          if ($scope.countries === 'sng') {
+            $scope.valArray.forEach(function(target) {
+              target.indexOf($scope.countries) > -1 && constructArray.push(target)
+            })
+
+            $scope.valArray = constructArray;
+            constructArray = [];
+          } else {
+            $scope.valArray.forEach(function(target) {
+              target.indexOf('sng') === -1 && constructArray.push(target)
+            })
+
+            $scope.valArray = constructArray;
+            constructArray = [];
+          }
+
+          $scope.valArray.forEach(function(target) {
+            target.indexOf($scope.vehicle) > -1 && constructArray.push(target)
+          })
+
+          $scope.result = constructArray;
+
+          $scope.price = $scope.green_coef.dataGreen[$scope.result];
+          console.log($scope.price);
         }
 
       })

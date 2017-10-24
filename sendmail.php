@@ -169,7 +169,8 @@ EOD;
     }
 
 }
-$to = 'zakaz@shulman.com.ua';
+// $to = 'zakaz@shulman.com.ua';
+$to = 'teldars@gmail.com';
 //$to        = 'k@kirill.pp.ua';
 $subject = 'Замовлення (Автоцивілка)';
 

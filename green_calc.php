@@ -223,7 +223,7 @@ $url1 = get_template_directory_uri();
                                                   </div>
                                               </div>
                                               <div class="button_section">
-                                                  <div class="calc_n flor_next" ng-click="insuranceName = 'ПЗУ Україна (Польща)'; franc=francPzu; checkoutResult=calculating(insertCash(pasteData.pzu),preFinalResultPZU); dcvEdit = insertCash(pasteData.pzu)">Придбати</div>
+                                                  <div class="calc_n flor_next" ng-click="greenInsuranceName = 'ПЗУ Україна (Польща)';">Придбати</div>
                                               </div>
                                           </div>
                                       </div>
@@ -266,7 +266,50 @@ $url1 = get_template_directory_uri();
                                                   </div>
                                               </div>
                                               <div class="button_section">
-                                                  <div class="calc_n flor_next" ng-click="insuranceName = 'ПЗУ Україна (Польща)'; franc=francPzu; checkoutResult=calculating(insertCash(pasteData.pzu),preFinalResultPZU); dcvEdit = insertCash(pasteData.pzu)">Придбати</div>
+                                                  <div class="calc_n flor_next" ng-click="greenInsuranceName = 'Княжа';">Придбати</div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-3 ins_add">
+                                          <div class="insurance_item">
+                                              <div class="insurance_item_wrapper">
+                                                  <div class="top">
+                                                      <div class="img_container">
+                                                          <img src="<?php echo get_template_directory_uri();?>/images/Kniazha-logo.png" alt="">
+                                                      </div>
+                                                      <div class="description">
+                                                          Княжа
+                                                          (Австрія)
+                                                      </div>
+                                                  </div>
+                                                  <div class="middle">
+                                                      <h5>Бонус</h5>
+                                                      <span>Картка дій при ДТП за кордоном</span>
+                                                      <span>Безкоштовна Доставка
+                                                          <!-- <div class="question_circle_wrapper">
+                                                              <div class="question_circle">?</div>
+                                                              <div class="answer_circle">евакуація з місця ДТП<br>
+                                                                  доставка палива<br>
+                                                                  заміна колеса<br>
+                                                                  запуск двигуна
+                                                              </div>
+                                                          </div> -->
+                                                      </span>
+                                                  </div>
+                                                  <div class="bottom">
+                                                      <h5>ПРОПОЗИЦІЯ</h5>
+                                                      <table>
+                                                          <tbody>
+                                                          <tr>
+                                                              <td>ЦІНА</td>
+                                                              <td class="oscpv">{{price}}<span class="arno">₴</span></td>
+                                                          </tr>
+                                                          </tbody>
+                                                      </table>
+                                                  </div>
+                                              </div>
+                                              <div class="button_section">
+                                                  <div class="calc_n flor_next" ng-click="greenInsuranceName = 'Княжа';">Придбати</div>
                                               </div>
                                           </div>
                                       </div>
@@ -276,6 +319,9 @@ $url1 = get_template_directory_uri();
                             <div class="reminde_wrapper">
                               <div class="row clearfix">
                                 <div class="col-md-12">
+                                  <div class="remember_title">
+                                    Страховка знадобиться пізніше, прошу нагадати:
+                                  </div>
                                   <form role='form' name="remindForm" class="remindForm" id="remindForm" action="" method="post" novalidate>
                                     <div class="row clearfix">
                                       <div class="col-md-4">
@@ -369,7 +415,7 @@ $url1 = get_template_directory_uri();
                                                 <span>Посвідчення водія (Страхувальника)</span>
                                                 <span>Податковий номер (іпн)</span>
                                                 <span>Тех паспорт ТЗ (1,2 ст.)</span>
-                                                <span>Дата початку дії</span>
+                                                <span>Дата початку дії:</span>
                                                 <input type="text" id="datepickerDrag" ng-model="preFinalForm.dateDragForm" name="dateDragForm" required>
                                                 <p style="color:red;" ng-show="dragDropForm1.dateDragForm.$invalid && !dragDropForm1.dateDragForm.$pristine" class="help-block">Вкажіть дату</p>
                                                 <p style="color:red;" ng-show="dragDropForm1.documents.$invalid && !dragDropForm1.documents.$pristine" class="help-block">Завантажте фото документів</p>
@@ -465,56 +511,29 @@ $url1 = get_template_directory_uri();
                                                         </div>
                                                 </div>
                                                 <div class="state_3_item">
-                                                    <h4>Документ</h4>
+                                                    <h4>Латиницею
+                                                      <div class="question_circle_wrapper question_circle_wrapper_green">
+                                                          <div class="question_circle">?</div>
+                                                          <div class="answer_circle">Згідно посвідчення водія або закордонного паспорта</div>
+                                                      </div>
+                                                    </h4>
                                                     <div class="row clearfix">
                                                         <div class="col-md-6">
-                                                            <div class="input_container">
-                                                               <span>
-                                                                  Тип документа<span class="redstar" style="color: red">*</span>
-                                                               </span>
-                                                                <div class="pseudo_select">
-                                                                    <div class="mirror" id="mirrort">Паспорт</div>
-                                                                    <div class="option_wrapper">
-                                                                        <div class="option current-option">Паспорт</div>
-                                                                        <div class="option">Посвідчення водія</div>
-                                                                        <div class="option reserved">
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="input_container">
-                                                                <div class="row clearfix">
-                                                                    <div class="col-md-4" ng-class="{ 'has-error' : preForm.series.$invalid && !preForm.series.$pristine}">
-                                                                            <span>
-                                                                                Серія<span class="redstar" style="color: red">*</span>
-                                                                            </span>
-                                                                        <input type="text" name="series" ng-model="preFinalForm.series" required>
-                                                                    </div>
-                                                                    <div class="col-md-8" ng-class="{ 'has-error' : preForm.docNumber.$invalid && !preForm.docNumber.$pristine}">
-                                                                           <span>
-                                                                               Номер<span class="redstar" style="color: red">*</span>
-                                                                           </span>
-                                                                        <input type="text" required name="docNumber" ng-model="preFinalForm.docNumber" required>
-                                                                        <p style="color:red;" ng-show="preForm.docNumber.$invalid && preForm.docNumber.$touched" class="help-block">Не вірний формат Номера</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                          <div class="input_container" ng-class="{ 'has-error' : preForm.latsurn.$invalid && !preForm.latsurn.$pristine }">
+                                                             <span>
+                                                                 Прізвище<span class="redstar" style="color: red">*</span>
+                                                             </span>
+                                                              <input type="text" id="latsurn" required name="latsurn" ng-model="preFinalForm.latsurn">
+                                                              <p style="color:red;" ng-show="preForm.latsurn.$invalid && preForm.latsurn.$touched" class="help-block">Заповніть це поле</p>
+                                                          </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="input_container" ng-class="{ 'has-error' : preForm.whome.$invalid && !preForm.whome.$pristine }">
+                                                            <div class="input_container" ng-class="{ 'has-error' : preForm.latname.$invalid && !preForm.latname.$pristine }">
                                                                <span>
-                                                                   Ким виданий<span class="redstar" style="color: red">*</span>
+                                                                   Ім'я<span class="redstar" style="color: red">*</span>
                                                                </span>
-                                                                <input type="text" required name="whome" ng-model="preFinalForm.whome">
-                                                                <p style="color:red;" ng-show="preForm.whome.$invalid && preForm.whome.$touched" class="help-block">Заповніть це поле</p>
-                                                            </div>
-                                                            <div class="input_container" ng-class="{ 'has-error' : preForm.docDate.$invalid && !preForm.docDate.$pristine}">
-                                                               <span>
-                                                                   Дата видачі<span class="redstar" style="color: red">*</span>
-                                                               </span>
-                                                                <input type="text" id="mask_date2" name="docDate" ng-model="preFinalForm.docDate" required>
-                                                                <p style="color:red;" ng-show="preForm.docDate.$invalid && preForm.docDate.$touched" class="help-block">Не вірний формат дати</p>
+                                                                <input type="text" required id="latname" name="latname" ng-model="preFinalForm.whome">
+                                                                <p style="color:red;" ng-show="preForm.latname.$invalid && preForm.latname.$touched" class="help-block">Заповніть це поле</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -857,19 +876,13 @@ $url1 = get_template_directory_uri();
                                                         <tr>
                                                             <td>
                                                                 <h5>СК</h5>
-                                                                <span>{{insuranceName}}</span>
+                                                                <span>{{greenInsuranceName}}</span>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <h5>Страховка</h5>
-                                                                <span>ОСАГО, франшиза {{franc}} <span class="arno">₴</span> {{dgo}} <span class="arno">₴</span></span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h5>Категорія ТЗ</h5>
-                                                                <span>{{autoCategory}}</span>
+                                                                <span>Зелена карта</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -881,20 +894,14 @@ $url1 = get_template_directory_uri();
                                                         <tr>
                                                             <td>
                                                                 <h5>Тип ТЗ</h5>
-                                                                <span>{{engine}}<sup ng-show="sup">3</sup></span>
+                                                                <span>{{vehicleName}}</span>
 
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <h5>Місце реєстрації ТЗ</h5>
-                                                                <span>{{cityName}}</span>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h5>Рік випуску авто</h5>
-                                                                <span>{{autoYear}}</span>
+                                                                <h5>Територія покриття</h5>
+                                                                <span>{{countriesName}}</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -905,21 +912,16 @@ $url1 = get_template_directory_uri();
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <h5>Без ДТП</h5>
-                                                                <span>{{DTP}}</span>
+                                                                <h5>Період страхування</h5>
+                                                                <span>{{dateName}}</span>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <h5>Авто використ. як Таксі</h5>
-                                                                <span>{{taxiQuestion}}</span>
+                                                                <h5>Дата початку дії</h5>
+                                                                <span>{{preFinalForm.dateDragForm}}</span>
 
                                                             </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <h5>Пільга</h5>
-                                                                <span>{{pilgaText}}</span></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

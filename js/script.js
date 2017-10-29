@@ -16,6 +16,19 @@ jQuery(document).ready(function () {
     jQuery('.mirror').bind("DOMSubtreeModified",function(){
         document.querySelector('#jQueryInputDoc').value = document.querySelector('.mirror').innerHTML;
     });
+
+    jQuery("#latname, #latsurn").keypress(function(event){
+      var ew = event.which;
+      if(ew == 45)
+          return true;
+      if(48 <= ew && ew <= 57)
+          return true;
+      if(65 <= ew && ew <= 90)
+          return true;
+      if(97 <= ew && ew <= 122)
+          return true;
+      return false;
+    });
     // scroll on mobile
 
 
@@ -33,8 +46,20 @@ jQuery(document).ready(function () {
         .find('.arrow').addClass('block')
       })
 
+      /*Datepicker*/
+
+      let ukrMonthArray = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+          shortDaysArray = [ "Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб" ];
+
+          jQuery.datepicker.setDefaults({
+            monthNames: ukrMonthArray,
+            dayNamesMin: shortDaysArray,
+            firstDay: 1,
+            dateFormat: 'dd-mm-yy'
+           });
+
       var datepicker = jQuery('#datepicker');
-      datepicker.datepicker();
+      datepicker.datepicker({minDate : 0});
 
       var datepickerDI = jQuery('#datepickerDI');
       datepickerDI.datepicker();
@@ -1094,7 +1119,7 @@ insuranceApp.controller('autoLabel', ['$scope', '$http', function ($scope, $http
           let constructArray = [];
 
           for (target in $scope.green_coef.dataGreen) {
-            target.indexOf($scope.date) > -1 && target.indexOf($scope.date) !== 1 && $scope.valArray.push(target);
+            target.indexOf($scope.date) > -1 && target.indexOf($scope.date) !== 5 && $scope.valArray.push(target);
           }
 
           console.log($scope.valArray);
@@ -1123,6 +1148,11 @@ insuranceApp.controller('autoLabel', ['$scope', '$http', function ($scope, $http
 
           $scope.price = $scope.green_coef.dataGreen[$scope.result];
           console.log($scope.price);
+          $scope.valArray = [];
+
+          if ($scope.green_coef.dataGreen.ins_add) {
+            document.querySelector('.ins_add').style.display = 'block';
+          }
         }
 
       })
